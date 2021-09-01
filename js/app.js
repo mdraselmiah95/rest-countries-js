@@ -8,7 +8,7 @@ const spinner = document.getElementById("spinner");
 searchBtn.addEventListener("click", function () {
   const search = searchInput.value;
   spinner.style.display = "none";
-  if (search === "" || search.status === 404) {
+  if (search === "") {
     showError.innerText = "Search field cannot be empty.";
     return;
   }
@@ -29,13 +29,12 @@ const displayCountry = (countries) => {
     showError.innerText = "No Result Found";
   } else {
     showError.innerText = "";
-  }
-  countries.forEach((country) => {
-    // console.log(country.alpha3Code);
+    countries.forEach((country) => {
+      // console.log(country.alpha3Code);
 
-    const div = document.createElement("div");
-    div.classList.add("col");
-    div.innerHTML = `
+      const div = document.createElement("div");
+      div.classList.add("col");
+      div.innerHTML = `
             <div class="card p-2">
                 <img src="${country.flag}" class="card-img-top img-fluid" alt="country flag" />
                 <div class="card-body">
@@ -46,8 +45,9 @@ const displayCountry = (countries) => {
             </div>    
       `;
 
-    countryContainer.appendChild(div);
-  });
+      countryContainer.appendChild(div);
+    });
+  }
 };
 
 const showCountryDetails = (code) => {
